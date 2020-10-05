@@ -25,7 +25,7 @@ public class Application {
     public static void updateNewUsersStatus(ArrayList<User> userArrayList) {
         for (User currentUser : userArrayList) {
             if (currentUser.getStatus() == userStatus.NEW &&
-                    LocalDate.now().compareTo(currentUser.timeStamp) > 1) {
+                    LocalDate.now().minusDays(1).compareTo(currentUser.timeStamp) > 0) {
                 currentUser.setStatus(userStatus.ACTIVE);
             }
         }
